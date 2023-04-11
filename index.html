@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+   <!-- Required meta tags -->
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+   <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+   <title>Random Key Generator</title>
+
+  </head>
+  <body>
+    <center>
+      <div class="jumbotron">
+        <h1 class="display-10">Random Key Generator</h1>
+    </center>
+    <div class="alert alert-info" role="alert">
+      <p class="lead">Pembangkit kunci acak merupakan pemrograman yang digunakan untuk menghasilkan keacakan kunci dalam bentuk Byte, Hex, dan Alphabet.</p>
+    </div>
+    
+    <hr class="my-4">
+
+    <label class="lead">Panjang Kunci:</label>
+       <input type="number" id="length" name="length" min="1" max="64">
+        <hr class="my-4">
+    
+    <p class="lead">Kunci Byte:<span id="byteResult"></span></p>
+        <p class="lead">
+           <a class="btn-primary btn-sm" href="#" onclick="generateByte()">Generate</a>
+               <a class="btn-danger btn-sm" href="#" onclick="resetbyte()">Reset</a>
+                  <a class="btn-success btn-sm" href="#" onclick="copybyte()">Copy</a>
+                  <hr class="my-4">
+        </p>
+
+    <p class="lead">Kunci Hex:<span id="hexResult"></span></p>
+        <p class="lead">
+          <a class="btn-primary btn-sm" href="#" onclick="generateRandomHex()">Generate</a>
+              <a class="btn-danger btn-sm" href="#" onclick="resethex()">Reset</a>
+                 <a class="btn-success btn-sm" href="#" onclick="copyhex()">Copy</a>
+                   <hr class="my-4">
+        </p>
+
+    <p class="lead">Kunci Alphabets:<span id="alpResult"></span></p>
+        <p class="lead">
+          <a class="btn-primary btn-sm" href="#" onclick="generateRandomAlpha()">Generate</a>
+             <a class="btn-danger btn-sm" href="#" onclick="resetalpha()">Reset</a>
+               <a class="btn-success btn-sm" href="#" onclick="copyalpha()">Copy</a>
+                <hr class="my-4">
+        </p>
+
+      </div >
+  
+   <script>
+      //Random Kunci Byte
+      function generateByte() {
+        let random_byte = ' ';
+        const length = document.getElementById("length").value;
+        for (let i = 0; i < length; i++) {
+          random_byte += String.fromCharCode(Math.floor(Math.random() * 256));
+        }
+        document.getElementById('byteResult').textContent = random_byte;
+      }
+
+      //Random Kunci Hexadecimal
+      function generateRandomHex() {
+        const hexLength = document.getElementById("length").value;
+        const hexChars = '0123456789abcdef';
+        let hex = '';
+        for (let i = 0; i < hexLength; i++) {
+          hex += hexChars[Math.floor(Math.random() * hexChars.length)];
+        }
+        document.getElementById('hexResult').textContent = hex;
+      }
+
+      //Random Kunci Aphabets
+      function generateRandomAlpha() {
+        const alphabetLength = document.getElementById("length").value;
+        const alphabetChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        let alphabet = '';
+        for (let i = 0; i < alphabetLength; i++) {
+          alphabet += alphabetChars[Math.floor(Math.random() * alphabetChars.length)];
+        }
+        document.getElementById('alpResult').textContent = alphabet;
+      }
+
+      //Reset
+      function resetbyte(){
+        document.getElementById('byteResult').textContent = '';
+      }
+      function resethex(){
+        document.getElementById('hexResult').textContent = '';
+      }
+      function resetalpha(){
+        document.getElementById('alpResult').textContent = '';
+      }
+      
+      //Copy
+        function copybyte() {
+        const random_byte = document.getElementById('byteResult').textContent;
+        if (random_byte !== '') {
+          navigator.clipboard.writeText(random_byte);
+          alert('Key are copied to clipboard!');}
+      }
+      function copyhex() {
+        const hex = document.getElementById('hexResult').textContent;
+        if (hex !== '') {
+          navigator.clipboard.writeText(hex);
+          alert('Key are copied to clipboard!');}
+      }
+      function copyalpha() {
+        const alphabet = document.getElementById('alpResult').textContent;
+        if (alphabet !== '') {
+          navigator.clipboard.writeText(alphabet);
+          alert('Key are copied to clipboard!');}
+      }
+
+    </script>
+
+  </body>
+</html>
