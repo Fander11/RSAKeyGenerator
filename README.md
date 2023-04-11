@@ -1,5 +1,5 @@
 # RandomKeyGenerator
-Pembangkitan kunci RSA
+Pembangkitan kunci acak
 
 HTML language for randomkeygenerator
 as format Byte, Hexadecimal, and Aplhabet
